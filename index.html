@@ -1,1 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry, Shivanee ❤️</title>
 
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffe1eb, #fff8fa);
+  overflow: hidden;
+  color: #4a2630;
+}
+
+.card {
+  width: min(92%, 520px);
+  padding: 42px 28px;
+  text-align: center;
+  background: rgba(255,255,255,0.92);
+  border-radius: 30px;
+  box-shadow: 0 18px 60px rgba(160,70,100,0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.heart {
+  font-size: 58px;
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+h1 {
+  margin: 10px 0;
+  font-size: 34px;
+}
+
+p {
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 28px;
+  min-height: 75px;
+  position: relative;
+}
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.yes {
+  background: #ff5d83;
+  color: white;
+  box-shadow: 0 8px 20px #ff5d8344;
+}
+
+.no {
+  background: #eeeeee;
+  color: #555;
+  position: relative;
+}
+
+.small {
+  font-size: 15px;
+  color: #86616b;
+}
+
+.float {
+  position: fixed;
+  bottom: -30px;
+  font-size: 24px;
+  animation: rise 7s linear infinite;
+  opacity: .75;
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-110vh) rotate(20deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+  <div class="heart">🥺❤️</div>
+
+  <h1>Hey Shivanee…</h1>
+
+  <p>
+    Okay… I messed up. 🥺<br>
+    And I know just saying <b>“sorry”</b> isn't enough…
+  </p>
+
+  <p>
+    So I made this little thing just for you. ❤️
+  </p>
+
+  <p>
+    <b>Will you forgive me?</b> 🫶
+  </p>
+
+  <div class="buttons" id="buttons">
+
+    <button class="btn yes" onclick="forgive()">
+      YES ❤️
+    </button>
+
+    <button class="btn no" id="no">
+      NO 😤
+    </button>
+
+  </div>
+
+  <p class="small">
+    (Please don't press NO… I'm already sorry 😭)
+  </p>
+
+</div>
+
+<script>
+
+const no = document.getElementById("no");
+
+function moveNo() {
+
+  const b = document.getElementById("buttons");
+  const r = b.getBoundingClientRect();
+
+  no.style.position = "absolute";
+
+  no.style.left =
+    Math.random() * Math.max(20, r.width - 100) + "px";
+
+  no.style.top =
+    (Math.random() * 40 - 20) + "px";
+}
+
+no.addEventListener("mouseenter", moveNo);
+
+no.addEventListener("touchstart", function(e) {
+  e.preventDefault();
+  moveNo();
+});
+
+no.addEventListener("click", moveNo);
+
+
+function forgive() {
+
+  document.getElementById("card").innerHTML = `
+
+    <div class="heart">🥰❤️</div>
+
+    <h1>YAYYYY! 🥹</h1>
+
+    <p>You forgave me!</p>
+
+    <p>
+      <b>
+        I promise I'll make it up to you, Shivanee. ❤️
+      </b>
+    </p>
+
+    <p>Come here… 🫂</p>
+
+    <p>
+      I'm really, really sorry. 🥺❤️
+    </p>
+
+  `;
+
+  for (let i = 0; i < 20; i++) {
+
+    let s = document.createElement("div");
+
+    s.className = "float";
+
+    s.textContent =
+      ["❤️","💗","💕","🥰","🫶"][i % 5];
+
+    s.style.left =
+      Math.random() * 100 + "vw";
+
+    s.style.animationDelay =
+      Math.random() * 4 + "s";
+
+    document.body.appendChild(s);
+  }
+}
+
+</script>
+
+</body>
+</html>
